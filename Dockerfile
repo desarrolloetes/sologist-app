@@ -20,13 +20,13 @@ RUN mkdir -p $appDir
 # Se empaqueta el código fuente
 ADD . $appDir
 
-ENV REACT_APP_COMPANY_ID 1
-ENV REACT_APP_API_URL https://cartones-api.azurewebsites.net/api/
-ENV REACT_APP_COMPANY_NAME Sologist
-ENV REACT_APP_COMPANY_POWERED powered by Sologist
+#ENV REACT_APP_COMPANY_ID 1
+#ENV REACT_APP_API_URL https://cartones-api.azurewebsites.net/api/
+#ENV REACT_APP_COMPANY_NAME Sologist
+#ENV REACT_APP_COMPANY_POWERED powered by Sologist
 # local runtime configs
-ENV NODE_ENV=development
-ENV PORT=3007
+#ENV NODE_ENV=development
+#ENV PORT=3007
 
 EXPOSE 3007
 
