@@ -7,7 +7,7 @@ import GuideTableHead from './GuideTableHead';
 import GuideTableToolbar from './GuideTableToolbar';
 import { getComparator, stableSort } from 'src/@jumbo/utils/tableHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGuidesBeetrack, deleteGuide, setCurrentGuide, setInitStateGuide} from 'src/redux/actions/Guides';
+import { getGuidesBeetrack, deleteGuide, setCurrentGuide, setInitStateGuide } from 'src/redux/actions/Guides';
 import ConfirmDialog from 'src/@jumbo/components/Common/ConfirmDialog';
 import { useDebounce } from 'src/@jumbo/utils/commonHelper';
 import useStyles from './index.style';
@@ -183,6 +183,7 @@ const GuidesBeetrackModule = () => {
                 <Grid item xs={6} sm={4}>
                   <MuiPickersUtilsProvider utils={MomentUtils}>
                     <DatePicker
+                      id="dpStartDate"
                       disableToolbar
                       style={{ marginTop: -8 }}
                       margin="dense"
@@ -197,6 +198,7 @@ const GuidesBeetrackModule = () => {
                 <Grid item xs={6} sm={4}>
                   <MuiPickersUtilsProvider utils={MomentUtils}>
                     <DatePicker
+                      id="dpEndDate"
                       disableToolbar
                       style={{ marginTop: -8 }}
                       margin="dense"
