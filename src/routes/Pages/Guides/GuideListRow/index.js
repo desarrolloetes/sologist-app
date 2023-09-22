@@ -8,6 +8,7 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Delete, Edit, MoreHoriz, Visibility } from '@material-ui/icons';
+import moment from 'moment';
 // import { timeFromNow } from '../../../../@jumbo/utils/dateHelper';
 // import { Block, CheckCircleOutline, Delete, Edit, Mail, MoreHoriz, Visibility } from '@material-ui/icons';
 // import { useDispatch } from 'react-redux';
@@ -83,49 +84,19 @@ const GuideListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDelete,
       <TableCell>{row.proveedor}</TableCell>
       <TableCell>{row.comuna}</TableCell>
       <TableCell>{row.guia}</TableCell>
-      <TableCell>
-        {new Date(row.fechaSubida).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaSubida).getHours() +
-          ':' +
-          new Date(row.fechaSubida).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaSubida)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.devolucion}</TableCell>
       <TableCell>{row.patente}</TableCell>
       <TableCell>{row.fono}</TableCell>
       <TableCell>{row.sensible}</TableCell>
-      <TableCell>
-        {new Date(row.fechaEntrega).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaEntrega).getHours() +
-          ':' +
-          new Date(row.fechaEntrega).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaEntrega)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.patenteReal}</TableCell>
       <TableCell>{row.encargadoPreparacion}</TableCell>
-      <TableCell>
-        {new Date(row.fechaPreparacion).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaPreparacion).getHours() +
-          ':' +
-          new Date(row.fechaPreparacion).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaPreparacion)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.encargadoDistribucion}</TableCell>
-      <TableCell>
-        {new Date(row.fechaEntrada).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaEntrada).getHours() +
-          ':' +
-          new Date(row.fechaEntrada).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaEntrada)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.encargadoDespacho}</TableCell>
-      <TableCell>
-        {new Date(row.fechaDespacho).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaDespacho).getHours() +
-          ':' +
-          new Date(row.fechaDespacho).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaDespacho)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.encargadoEntrega}</TableCell>
       <TableCell>{row.estadoEntrega}</TableCell>
       <TableCell>{row.estado}</TableCell>

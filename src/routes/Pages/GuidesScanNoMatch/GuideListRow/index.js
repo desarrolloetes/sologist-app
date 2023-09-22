@@ -8,6 +8,7 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Delete, Edit, MoreHoriz, Visibility } from '@material-ui/icons';
+import moment from 'moment';
 // import { timeFromNow } from '../../../../@jumbo/utils/dateHelper';
 // import { Block, CheckCircleOutline, Delete, Edit, Mail, MoreHoriz, Visibility } from '@material-ui/icons';
 // import { useDispatch } from 'react-redux';
@@ -70,13 +71,7 @@ const GuideListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDelete,
       <TableCell>{row.id}</TableCell>
       <TableCell>{row.guide}</TableCell>
       <TableCell>{row.usuario}</TableCell>
-      <TableCell>
-        {new Date(row.date).toLocaleDateString() +
-          ' ' +
-          new Date(row.date).getHours() +
-          ':' +
-          new Date(row.date).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.date)).format('DD/MM/YYYY hh:mm')}</TableCell>
     </TableRow>
   );
 };

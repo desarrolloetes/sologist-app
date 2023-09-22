@@ -8,6 +8,7 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Delete, Edit, MoreHoriz, Visibility } from '@material-ui/icons';
+import moment from 'moment';
 // import { timeFromNow } from '../../../../@jumbo/utils/dateHelper';
 // import { Block, CheckCircleOutline, Delete, Edit, Mail, MoreHoriz, Visibility } from '@material-ui/icons';
 // import { useDispatch } from 'react-redux';
@@ -72,13 +73,7 @@ const GuideScanListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDel
       <TableCell>{row.producto}</TableCell>
       <TableCell>{row.proveedor}</TableCell>
       <TableCell>{row.comuna}</TableCell>
-      <TableCell>
-        {new Date(row.fechaSubida).toLocaleDateString() +
-          ' ' +
-          new Date(row.fechaSubida).getHours() +
-          ':' +
-          new Date(row.fechaSubida).getMinutes()}
-      </TableCell>
+      <TableCell>{moment(new Date(row.fechaSubida)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.estado}</TableCell>
       <TableCell align="center" onClick={event => event.stopPropagation()}>
         <CmtDropdownMenu items={guideActions} onItemClick={onGuideMenuClick} TriggerComponent={<MoreHoriz />} />

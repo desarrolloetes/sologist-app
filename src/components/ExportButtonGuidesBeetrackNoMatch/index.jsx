@@ -1,5 +1,7 @@
 import React from 'react';
 import { CSVLink } from 'react-csv';
+import moment from 'moment';
+
 
 const ExportButtonGuidesBeetrackNoMatch = ({ data }) => {
   const headers = [
@@ -15,7 +17,7 @@ const ExportButtonGuidesBeetrackNoMatch = ({ data }) => {
       headers={headers}
       className="btn btn-primary"
       separator={';'}
-      filename={`guides_report_${new Date().toLocaleDateString()}.csv`}>
+      filename={`guides_nomatch_report_${moment(new Date(new Date())).format('DD/MM/YYYY hh:mm')}.csv`}>
       <i className="fa fa-file-download" />
       <span> Exportar</span>
     </CSVLink>
