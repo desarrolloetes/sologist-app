@@ -845,7 +845,7 @@
   "roles.appModule.viewRole": "Ver",
   "roles.appModule.editRole": "Editar",
   "roles.appModule.deleteRole": "Eliminar",
-  "fetch.roles.error.message": "Hubo un problema en la respuesta del servidor.",
+  "fetch.roles.error.message": "Error : {code} ",
   "fetch.roles.add.success.message": "El nuevo rol se ha añadido con éxito.",
   "fetch.roles.update.success.message": "El rol seleccionado ha sido actualizado con éxito.",
   "fetch.roles.delete.bulkSuccess.message": "Los roles seleccionados se han eliminado con éxito.",

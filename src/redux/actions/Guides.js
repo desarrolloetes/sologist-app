@@ -26,11 +26,11 @@ export const getGuides = (startDate = '', endDate = '', filterOptions = [], sear
           dispatch({ type: GET_GUIDES, payload: data.data.guides });
           if (callbackFun) callbackFun(data.data.guides);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -48,11 +48,11 @@ export const getGuidesBeetrack = (startDate = '', endDate = '', filterOptions = 
           dispatch({ type: GET_GUIDES, payload: data.data.guides });
           if (callbackFun) callbackFun(data.data.guides);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -71,11 +71,11 @@ export const getScanedGuides = (scanedGuides, userName, filterOptions = [], sear
           dispatch({ type: GET_GUIDES, payload: data.data.guides });
           if (callbackFun) callbackFun(data.data.guides);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -93,11 +93,11 @@ export const getScanedGuidesNoMatch = (startDate = new Date(), endDate = new Dat
           dispatch({ type: GET_GUIDES, payload: data.data.guides });
           if (callbackFun) callbackFun(data.data.guides);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -140,12 +140,12 @@ export const addNewGuide = (guide, callbackFun) => {
           if (callbackFun) callbackFun(data.data);
         } else {
           //console.log('status no es 200');
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
         //console.log('catch error en la llamada');
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -163,11 +163,11 @@ export const updateGuide = (guideId, guide, callbackFun) => {
           //dispatch({ type: EDIT_GUIDE, payload: data.data });
           if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -176,20 +176,20 @@ export const updateGuideStatus = (id, guide, callbackFun) => {
   return dispatch => {
     dispatch(fetchStart());
     const token = localStorage.getItem('token') || '';
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;    
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios
       .patch(`v3/guides/${id}`, guide)
-      .then(response => {
-        if (response.status === 200) {
+      .then(data => {
+        if (data.status === 200) {
           dispatch(fetchSuccess(<IntlMessages id="fetch.guide.update.statusSuccess.message" />));
-          dispatch({ type: EDIT_GUIDE, payload: response.data });
-          if (callbackFun) callbackFun(response.data);
+          dispatch({ type: EDIT_GUIDE, payload: data.data });
+          if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -202,17 +202,17 @@ export const updateScanedGuides = (scaned_guides, status, userName, callbackFun)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios
       .patch('v3/guides/', { params: { scaned_guides, status, userName } })
-      .then(response => {
-        if (response.status === 200) {
+      .then(data => {
+        if (data.status === 200) {
           dispatch(fetchSuccess(<IntlMessages id="fetch.guide.update.statusSuccess.message" />));
           //dispatch({ type: EDIT_GUIDE, payload: response.data });
-          if (callbackFun) callbackFun(response.data);
+          if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -224,17 +224,17 @@ export const deleteBulkGuides = (guideIds, callbackFun) => {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios
       .put('v3/guides/bulk-delete', { guideIds })
-      .then(response => {
-        if (response.status === 200) {
+      .then(data => {
+        if (data.status === 200) {
           dispatch(fetchSuccess(<IntlMessages id="fetch.guide.delete.bulkSuccess.message" />));
           dispatch({ type: DELETE_BULK_GUIDES, payload: guideIds });
           if (callbackFun) callbackFun();
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -243,7 +243,7 @@ export const deleteGuide = (guideId, callbackFun) => {
   return dispatch => {
     dispatch(fetchStart());
     const token = localStorage.getItem('token') || '';
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;    
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios
       .delete(`v3/guides/${guideId}`)
       .then(data => {
@@ -252,11 +252,11 @@ export const deleteGuide = (guideId, callbackFun) => {
           dispatch({ type: DELETE_GUIDE, payload: guideId });
           if (callbackFun) callbackFun();
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.guide.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -274,11 +274,13 @@ export const bulkLoadGuides = (payload, callbackFun) => {
           //dispatch({ type: ADD_PROCESS, payload: data.data });
           if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.guides.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.guides.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.guides.error.message" />));
+        dispatch(
+          fetchError(<IntlMessages id="fetch.guides.error.message" values={{ code: error.response.data.message }} />),
+        );
       });
   };
 };

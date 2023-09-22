@@ -24,11 +24,11 @@ export const getRoles = (filterOptions = [], searchTerm = '', callbackFun) => {
           dispatch({ type: GET_ROLES, payload: data.data.roles });
           if (callbackFun) callbackFun(data.data.roles);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -53,12 +53,12 @@ export const addNewRole = (role, callbackFun) => {
           if (callbackFun) callbackFun(data.data);
         } else {
           //console.log('status no es 200');
-          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: data.data.message }}/>));
         }
       })
       .catch(error => {
         //console.log('catch error en la llamada');
-        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -82,11 +82,11 @@ export const updateRole = (roleId, role, callbackFun) => {
           //dispatch({ type: EDIT_USER, payload: data.data });
           if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: data.data.message }}  />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -142,11 +142,11 @@ export const deleteRole = (roleId, callbackFun) => {
           dispatch({ type: DELETE_ROLE, payload: roleId });
           if (callbackFun) callbackFun();
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.roles.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };

@@ -25,7 +25,7 @@ export const getUsers = (filterOptions = [], searchTerm = '', callbackFun) => {
           dispatch({ type: GET_USERS, payload: data.data.users });
           if (callbackFun) callbackFun(data.data.users);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }}/>));
         }
       })
       .catch(error => {
@@ -90,11 +90,11 @@ export const updateUser = (userId, user, callbackFun) => {
           //dispatch({ type: EDIT_USER, payload: data.data });
           if (callbackFun) callbackFun(data.data);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }}/>));
       });
   };
 };
@@ -124,17 +124,17 @@ export const deleteBulkUsers = (userIds, callbackFun) => {
     dispatch(fetchStart());
     axios
       .put('v3/users/bulk-delete', { userIds })
-      .then(response => {
-        if (response.status === 200) {
+      .then(data => {
+        if (data.status === 200) {
           dispatch(fetchSuccess(<IntlMessages id="fetch.user.delete.bulkSuccess.message" />));
           dispatch({ type: DELETE_BULK_USERS, payload: userIds });
           if (callbackFun) callbackFun();
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -150,11 +150,11 @@ export const deleteUser = (userId, callbackFun) => {
           dispatch({ type: DELETE_USER, payload: userId });
           if (callbackFun) callbackFun();
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -176,11 +176,11 @@ export const getUserRoles = (userId, filterOptions = [], searchTerm = '', callba
           // console.log('getUserRoles Actions')
           // console.log(data.data.userRoles);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -203,11 +203,11 @@ export const addUserRoles = (userRoles, callbackFun) => {
           //console.log('getUserRoles Actions')
           //console.log(data.data.userRoles);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }}/>));
       });
   };
 };
@@ -229,11 +229,11 @@ export const addUserPurchaseAreas = (userPurchaseAreas, callbackFun) => {
           //console.log('getUserRoles Actions')
           //console.log(data.data.userRoles);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
@@ -255,11 +255,11 @@ export const addUserBusinessUnits = (userBusinessUnits, callbackFun) => {
           //console.log('getUserRoles Actions')
           //console.log(data.data.userRoles);
         } else {
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };
