@@ -1,5 +1,5 @@
 import { fetchError, fetchStart, fetchSuccess } from './Common';
-import axios from '../../services/config';
+import axios from 'src/services/config';
 import {
   ADD_ROLE,
   //DELETE_BULK_ROLES,
@@ -7,9 +7,9 @@ import {
   EDIT_ROLE,
   GET_ROLES,
   SET_ROLE_DETAILS,
-} from '../../@jumbo/constants/ActionTypes';
+} from 'src/@jumbo/constants/ActionTypes';
 import React from 'react';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 export const getRoles = (filterOptions = [], searchTerm = '', callbackFun) => {
   return dispatch => {

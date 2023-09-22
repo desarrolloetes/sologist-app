@@ -14,7 +14,7 @@ import { useDebounce } from '../../../@jumbo/utils/commonHelper';
 import useStyles from './index.style';
 import RoleDetailView from './RoleDetailView';
 import NoRecordFound from './NoRecordFound';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 const RolesModule = () => {
   const classes = useStyles();

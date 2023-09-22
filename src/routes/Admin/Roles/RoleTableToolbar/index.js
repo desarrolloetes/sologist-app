@@ -14,7 +14,7 @@ import ConfirmDialog from '../../../../@jumbo/components/Common/ConfirmDialog';
 import CmtSearch from '../../../../@coremat/CmtSearch';
 import useStyles from './index.style';
 import Checkbox from '@material-ui/core/Checkbox';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 const filterOptionsList = [
   { label: <IntlMessages id="roles.appModule.filterActive" />, value: 'S' },

@@ -791,7 +791,7 @@
   "users.appModule.roleAssignment.emptyRoles": "Debe seleccinar al menos un rol!",
   "fetch.user.delete.roleAssignment.message": "Roles asignados exitosamente!",
 
-  "fetch.user.error.message": "Hubo un problema en la respuesta del servidor.",
+  "fetch.user.error.message": "Error : {code} ",
   "fetch.user.add.success.message": "El nuevo usuario se ha añadido con éxito.",
   "fetch.user.update.success.message": "El usuario seleccionado ha sido actualizado con éxito.",
   "fetch.user.delete.bulkSuccess.message": "Los usuarios seleccionados se han eliminado con éxito.",

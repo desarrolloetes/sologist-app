@@ -1,4 +1,4 @@
-import { SEND_FORGET_PASSWORD_EMAIL, UPDATE_AUTH_USER, UPDATE_LOAD_USER } from '../../@jumbo/constants/ActionTypes';
+import { SEND_FORGET_PASSWORD_EMAIL, UPDATE_AUTH_USER, UPDATE_LOAD_USER } from 'src/@jumbo/constants/ActionTypes';
 
 export const setAuthUser = user => {
   return dispatch => {

@@ -1,5 +1,5 @@
 import { fetchError, fetchStart, fetchSuccess } from './Common';
-import axios from '../../services/config';
+import axios from 'src/services/config';
 import {
   //ADD_USER,
   DELETE_BULK_USERS,
@@ -8,9 +8,9 @@ import {
   GET_USERS,
   SET_USER_DETAILS,
   GET_USER_ROLES,
-} from '../../@jumbo/constants/ActionTypes';
+} from 'src/@jumbo/constants/ActionTypes';
 import React from 'react';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 export const getUsers = (filterOptions = [], searchTerm = '', callbackFun) => {
   return dispatch => {
@@ -61,12 +61,12 @@ export const addNewUser = (user, callbackFun) => {
           if (callbackFun) callbackFun(data.data);
         } else {
           //console.log('status no es 200');
-          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+          dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: data.data.message }} />));
         }
       })
       .catch(error => {
         //console.log('catch error en la llamada');
-        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" />));
+        dispatch(fetchError(<IntlMessages id="fetch.user.error.message" values={{ code: error.response.data.message }} />));
       });
   };
 };

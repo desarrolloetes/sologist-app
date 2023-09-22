@@ -6,30 +6,25 @@ import TablePagination from '@material-ui/core/TablePagination';
 import GuideListRow from './GuideScanListRow';
 import GuideTableHead from './GuideScanTableHead';
 import GuideTableToolbar from './GuideScanTableToolbar';
-import { getComparator, stableSort } from '../../../@jumbo/utils/tableHelper';
+import { getComparator, stableSort } from 'src/@jumbo/utils/tableHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  updateScanedGuides,
-  deleteGuidesFromTable,
-  getScanedGuides,
-  setInitStateGuide,
-} from '../../../redux/actions/Guides';
-import ConfirmDialog from '../../../@jumbo/components/Common/ConfirmDialog';
-import { useDebounce } from '../../../@jumbo/utils/commonHelper';
+import { updateScanedGuides, deleteGuidesFromTable, getScanedGuides, setInitStateGuide } from 'src/redux/actions/Guides';
+import ConfirmDialog from 'src/@jumbo/components/Common/ConfirmDialog';
+import { useDebounce } from 'src/@jumbo/utils/commonHelper';
 import useStyles from './index.style';
 import NoRecordFound from './NoRecordFound';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Box, TextField } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-import GridContainer from '../../../@jumbo/components/GridContainer';
+import GridContainer from 'src/@jumbo/components/GridContainer';
 import Grid from '@material-ui/core/Grid';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import { fetchError } from '../../../redux/actions';
-import AppSelectBox from '../../../@jumbo/components/Common/formElements/AppSelectBox';
+import { fetchError } from 'src/redux/actions';
+import AppSelectBox from 'src/@jumbo/components/Common/formElements/AppSelectBox';
 
 const GuidesScanModule = () => {
   const classes = useStyles();
@@ -55,12 +50,24 @@ const GuidesScanModule = () => {
   const [scanedBarcodesError, setScanedBarcodesError] = useState('');
   const [status, setStatus] = useState('');
   const [statusError, setStatusError] = useState('');
+  const [scanedGuidesArray, setScanedGuidesArray] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setInitStateGuide());
   }, []);
+
+  useEffect(() => {
+    if (guides.length > 0) {
+      dispatch(
+        getScanedGuides(scanedGuidesArray, authUser.userName, filterOptions, debouncedSearchTerm, () => {
+          setFilterApplied(!!filterOptions.length || !!debouncedSearchTerm);
+          setGuidesFetched(true);
+        }),
+      );
+    }
+  }, [dispatch, filterOptions, debouncedSearchTerm]);
 
   const labels = [
     { title: 'Recibido', slug: 'R' },
@@ -94,9 +101,10 @@ const GuidesScanModule = () => {
       checkInputData = false;
     }
     if (checkInputData === true) {
-      console.log(scanedBarcodes);
+      //console.log(scanedBarcodes);
+      //setScanedGuidesArray(scanedBarcodes.split('\n'));
       dispatch(
-        updateScanedGuides(scanedBarcodes, status, authUser.userName, filterOptions, debouncedSearchTerm, () => {
+        updateScanedGuides(scanedGuidesArray, status, authUser.userName, filterOptions, debouncedSearchTerm, () => {
           setFilterApplied(!!filterOptions.length || !!debouncedSearchTerm);
           setGuidesFetched(true);
         }),
@@ -151,15 +159,17 @@ const GuidesScanModule = () => {
     setScanedBarcodes({ ...scanedBarcodes, barcode });
     if (result === '\n') {
       //setScanedBarcodes(barcode);
-      console.log(scanedBarcodes);
+      //console.log(scanedBarcodes);
       //let guias = barcode.replace(/\n/, ',');
+      let scaned_guides_array = barcode.split('\n');
+      setScanedGuidesArray(scaned_guides_array);
       dispatch(
-        getScanedGuides(barcode, authUser.userName, filterOptions, debouncedSearchTerm, () => {
+        getScanedGuides(scaned_guides_array, authUser.userName, filterOptions, debouncedSearchTerm, () => {
           setFilterApplied(!!filterOptions.length || !!debouncedSearchTerm);
           setGuidesFetched(true);
         }),
       );
-    } 
+    }
   };
 
   const isSelected = id => selected.indexOf(id) !== -1;
@@ -200,7 +210,7 @@ const GuidesScanModule = () => {
                     }}
                     helperText={statusError}
                   />
-              </Grid>
+                </Grid>
                 <Box display="flex" justifyContent="flex-end" mb={4}>
                   <Box ml={2}>
                     <Button variant="contained" color="primary" onClick={handleOnSubmitClick}>
@@ -208,7 +218,7 @@ const GuidesScanModule = () => {
                     </Button>
                   </Box>
                 </Box>
-{/*                 <Box display="flex" justifyContent="flex-end" mb={4}>
+                {/*                 <Box display="flex" justifyContent="flex-end" mb={4}>
                   <Box ml={2}>{guides && guides.length > 0 && <ExportButton data={guides} />}</Box>
                 </Box> */}
               </GridContainer>

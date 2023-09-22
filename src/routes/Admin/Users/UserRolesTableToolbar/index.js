@@ -9,11 +9,11 @@ import PropTypes from 'prop-types';
 import { Button, Chip, Menu, MenuItem } from '@material-ui/core';
 //import { useDispatch } from 'react-redux';
 //import { deleteBulkUsers } from '../../../../redux/actions/Users';
-import ConfirmDialog from '../../../../@jumbo/components/Common/ConfirmDialog';
-import CmtSearch from '../../../../@coremat/CmtSearch';
+import ConfirmDialog from 'src/@jumbo/components/Common/ConfirmDialog';
+import CmtSearch from 'src/@coremat/CmtSearch';
 import useStyles from './index.style';
 import Checkbox from '@material-ui/core/Checkbox';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 const filterOptionsList = [
   {

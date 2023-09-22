@@ -1,12 +1,11 @@
 
 # 1. For build React app
-FROM node:alpine AS development
-
+FROM node:16-alpine 
 
 ENV appDir /var/www/app
 
 # Se define como variable de ambiente que corra como productivo
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 # Se define como variable de ambiente que el pool de hilos de libuv sea 50
 ENV UV_THREADPOOL_SIZE=50
@@ -34,7 +33,8 @@ EXPOSE 3007
 RUN npm install --legacy--peer-deps --verbose&& \ 
     npm run build
 
-
+#COPY --from=0 $appDir .
+#COPY . .    
 
 # Crear usuario
 RUN adduser -D dockeruser

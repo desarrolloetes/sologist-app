@@ -5,7 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 const headCells = [
   {

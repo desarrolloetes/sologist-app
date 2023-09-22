@@ -6,7 +6,7 @@ import CmtDropdownMenu from '../../../../@coremat/CmtDropdownMenu';
 import CmtAvatar from '../../../../@coremat/CmtAvatar';
 import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Delete, Edit, MoreHoriz, Visibility } from '@material-ui/icons';
 // import { timeFromNow } from '../../../../@jumbo/utils/dateHelper';
 // import { Block, CheckCircleOutline, Delete, Edit, Mail, MoreHoriz, Visibility } from '@material-ui/icons';

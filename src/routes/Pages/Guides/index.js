@@ -5,27 +5,27 @@ import TablePagination from '@material-ui/core/TablePagination';
 import GuideListRow from './GuideListRow';
 import GuideTableHead from './GuideTableHead';
 import GuideTableToolbar from './GuideTableToolbar';
-import { getComparator, stableSort } from '../../../@jumbo/utils/tableHelper';
+import { getComparator, stableSort } from 'src/@jumbo/utils/tableHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGuides, deleteGuide, setCurrentGuide, setInitStateGuide } from '../../../redux/actions/Guides';
+import { getGuides, deleteGuide, setCurrentGuide, setInitStateGuide } from 'src/redux/actions/Guides';
 import AddBulkGuide from './AddBulkGuide';
-import ConfirmDialog from '../../../@jumbo/components/Common/ConfirmDialog';
-import { useDebounce } from '../../../@jumbo/utils/commonHelper';
+import ConfirmDialog from 'src/@jumbo/components/Common/ConfirmDialog';
+import { useDebounce } from 'src/@jumbo/utils/commonHelper';
 import useStyles from './index.style';
 import GuideDetailView from './GuideDetailView';
 import NoRecordFound from './NoRecordFound';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import { Box, TextField } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-import GridContainer from '../../../@jumbo/components/GridContainer';
+import GridContainer from 'src/@jumbo/components/GridContainer';
 import Grid from '@material-ui/core/Grid';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import { fetchError } from '../../../redux/actions';
-import ExportButton from '../../../components/ExportButton';
+import { fetchError } from 'src/redux/actions';
+import ExportButton from 'src/components/ExportButton';
 
 const GuidesModule = () => {
   const classes = useStyles();
@@ -52,6 +52,17 @@ const GuidesModule = () => {
   useEffect(() => {
     dispatch(setInitStateGuide());
   }, []);
+
+  useEffect(() => {
+    if (guides.length > 0) {
+      dispatch(
+        getGuides(selectedStartDate, selectedEndDate, filterOptions, debouncedSearchTerm, () => {
+          setFilterApplied(!!filterOptions.length || !!debouncedSearchTerm);
+          setGuidesFetched(true);
+        }),
+      );
+    }
+  }, [filterOptions, debouncedSearchTerm]);
 
   const handleCloseUserDialog = () => {
     setOpenGuideDialog(false);

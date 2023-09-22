@@ -1,5 +1,5 @@
 import { fetchError, fetchStart, fetchSuccess } from './Common';
-import axios from '../../services/config';
+import axios from 'src/services/config';
 import {
   //ADD_GUIDE,
   DELETE_BULK_GUIDES,
@@ -9,9 +9,9 @@ import {
   SET_CURRENT_GUIDE,
   GET_GUIDE_ROLES,
   RESET,
-} from '../../@jumbo/constants/ActionTypes';
+} from 'src/@jumbo/constants/ActionTypes';
 import React from 'react';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 
 export const getGuides = (startDate = '', endDate = '', filterOptions = [], searchTerm = '', callbackFun = '') => {
   return dispatch => {
@@ -57,8 +57,8 @@ export const getGuidesBeetrack = (startDate = '', endDate = '', filterOptions = 
   };
 };
 
-export const getScanedGuides = (guides, userName, filterOptions = [], searchTerm = '', callbackFun = '') => {
-  let scanedGuides = guides;
+export const getScanedGuides = (scanedGuides, userName, filterOptions = [], searchTerm = '', callbackFun = '') => {
+  //let scanedGuides = guides;
   return dispatch => {
     dispatch(fetchStart());
     const token = localStorage.getItem('token') || '';
@@ -80,7 +80,7 @@ export const getScanedGuides = (guides, userName, filterOptions = [], searchTerm
   };
 };
 
-export const getScanedGuidesNoMatch = (startDate = '', endDate = '', filterOptions = [], searchTerm = '', callbackFun = '') => {
+export const getScanedGuidesNoMatch = (startDate = new Date(), endDate = new Date(), filterOptions = [], searchTerm = '', callbackFun = '') => {
   return dispatch => {
     dispatch(fetchStart());
     const token = localStorage.getItem('token') || '';
@@ -194,14 +194,14 @@ export const updateGuideStatus = (id, guide, callbackFun) => {
   };
 };
 
-export const updateScanedGuides = (guides, status, userName, callbackFun) => {
-  let barcode = guides;
+export const updateScanedGuides = (scaned_guides, status, userName, callbackFun) => {
+  //let barcode = guides;
   return dispatch => {
     dispatch(fetchStart());
     const token = localStorage.getItem('token') || '';
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios
-      .patch('v3/guides/', { params: { barcode, status, userName } })
+      .patch('v3/guides/', { params: { scaned_guides, status, userName } })
       .then(response => {
         if (response.status === 200) {
           dispatch(fetchSuccess(<IntlMessages id="fetch.guide.update.statusSuccess.message" />));

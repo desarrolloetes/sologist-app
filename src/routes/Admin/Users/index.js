@@ -5,21 +5,21 @@ import TablePagination from '@material-ui/core/TablePagination';
 import UserListRow from './UserListRow';
 import UserTableHead from './UserTableHead';
 import UserTableToolbar from './UserTableToolbar';
-import { getComparator, stableSort } from '../../../@jumbo/utils/tableHelper';
+import { getComparator, stableSort } from 'src/@jumbo/utils/tableHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteUser,
   getUsers,
   setCurrentUser,
   setCurrentUserRoles,
-} from '../../../redux/actions/Users';
+} from 'src/redux/actions/Users';
 import AddEditUser from './AddEditUser';
-import ConfirmDialog from '../../../@jumbo/components/Common/ConfirmDialog';
-import { useDebounce } from '../../../@jumbo/utils/commonHelper';
+import ConfirmDialog from 'src/@jumbo/components/Common/ConfirmDialog';
+import { useDebounce } from 'src/@jumbo/utils/commonHelper';
 import useStyles from './index.style';
 import UserDetailView from './UserDetailView';
 import NoRecordFound from './NoRecordFound';
-import IntlMessages from '@jumbo/utils/IntlMessages';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
 import UserRoles from './UserRoles';
 const UsersModule = () => {
   const classes = useStyles();

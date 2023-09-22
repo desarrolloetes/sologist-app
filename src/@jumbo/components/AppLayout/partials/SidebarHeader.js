@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import { MenuItem, MenuList, Paper, Popover, Typography } from '@material-ui/core';
-import CmtAvatar from '../../../../@coremat/CmtAvatar';
+import CmtAvatar from 'src/@coremat/CmtAvatar';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { AuthMethods } from '../../../../services/auth';
-import { CurrentAuthMethod } from '../../../constants/AppConstants';
+import { AuthMethods } from 'src/services/auth';
+import { CurrentAuthMethod } from 'src/@jumbo/constants/AppConstants';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 // import PersonIcon from '@material-ui/icons/Person';
 // import SettingsIcon from '@material-ui/icons/Settings';
-import SidebarThemeContext from '../../../../@coremat/CmtLayouts/SidebarThemeContext/SidebarThemeContext';
-import IntlMessages from '@jumbo/utils/IntlMessages';
-import { useHistory } from "react-router-dom";
+import SidebarThemeContext from 'src/@coremat/CmtLayouts/SidebarThemeContext/SidebarThemeContext';
+import IntlMessages from 'src/@jumbo/utils/IntlMessages';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
