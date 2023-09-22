@@ -8,7 +8,7 @@ const ExportButtonGuidesBeetrackNoMatch = ({ data }) => {
     { label: 'id', key: 'id' },
     { label: 'Guia', key: 'guide' },
     { label: 'Usuario', key: 'usuario' },
-    { label: 'Fecha Scaneo', key: 'date' },
+    { label: 'Fecha Scaneo', key: 'creationDate' },
   ];
 
   return (

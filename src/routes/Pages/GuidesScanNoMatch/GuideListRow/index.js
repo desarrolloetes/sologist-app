@@ -67,11 +67,12 @@ const GuideListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDelete,
       tabIndex={-1}
       key={row.id}
       selected={isItemSelected}>
-         <TableCell></TableCell>
+      <TableCell></TableCell>
       <TableCell>{row.id}</TableCell>
       <TableCell>{row.guide}</TableCell>
       <TableCell>{row.usuario}</TableCell>
-      <TableCell>{moment(new Date(row.date)).format('DD/MM/YYYY hh:mm')}</TableCell>
+      {/* <TableCell>{moment(new Date(row.creationDate)).format('DD/MM/YYYY hh:mm')}</TableCell>  */}
+      <TableCell>{row.creationDate.substring(0, 10)}</TableCell>
     </TableRow>
   );
 };
