@@ -39,6 +39,12 @@ const headCells = [
     label: <IntlMessages id="guides.appModule.direccionHeader" />,
   },
   {
+    id: 'emailCliente',
+    numeric: false,
+    disablePadding: false,
+    label: <IntlMessages id="guides.appModule.emailClienteHeader" />,
+  },  
+  {
     id: 'producto',
     numeric: false,
     disablePadding: false,

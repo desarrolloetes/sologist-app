@@ -75,9 +75,10 @@ const GuideListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDelete,
       <TableCell>{row.nombreCliente}</TableCell>
       <TableCell>{row.rutCliente}</TableCell>
       <TableCell>{row.direccion}</TableCell>
+      <TableCell>{row.emailCliente}</TableCell>
       <TableCell>{row.producto}</TableCell>
       <TableCell>{row.proveedor}</TableCell>
-      <TableCell>{row.comuna}</TableCell>
+      <TableCell>{row.comunas}</TableCell>
       <TableCell>{row.guia}</TableCell>
       <TableCell>{moment(new Date(row.fechaSubida)).format('DD/MM/YYYY hh:mm')}</TableCell>
       <TableCell>{row.devolucion}</TableCell>

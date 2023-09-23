@@ -913,6 +913,7 @@
   "guides.appModule.nombreClienteHeader" :"Cliente", 
   "guides.appModule.rutClienteHeader" :"Rut",  
   "guides.appModule.direccionHeader" :"Dir.",  
+  "guides.appModule.emailClienteHeader" :"Email.",  
   "guides.appModule.productoHeader" :"Producto",  
   "guides.appModule.proveedorHeader" :"Proveedor",  
   "guides.appModule.comunaHeader" :"Comuna", 
