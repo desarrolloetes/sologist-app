@@ -107,6 +107,7 @@ const GuideListRow = ({ row, isSelected, onRowClick, onGuideEdit, onGuideDelete,
       <TableCell>{row.tagTipoServicio}</TableCell>
       <TableCell>{row.tagTotalDo}</TableCell>
       <TableCell>{row.tagTotalDoPeso}</TableCell>
+      <TableCell>{row.tagWH}</TableCell>
       <TableCell align="center" onClick={event => event.stopPropagation()}>
         <CmtDropdownMenu items={guideActions} onItemClick={onGuideMenuClick} TriggerComponent={<MoreHoriz />} />
       </TableCell>

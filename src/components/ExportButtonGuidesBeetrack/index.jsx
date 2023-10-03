@@ -41,6 +41,7 @@ const ExportButtonGuidesBeetrack = ({ data }) => {
     { label: 'TipoServicio', key: 'tagTipoServicio' },
     { label: 'TotalDo', key: 'tagTotalDo' },
     { label: 'TotalDoPeso', key: 'tagTotalDoPeso' },
+    { label: 'WH', key: 'tagWH' },
   ];
 
   return (

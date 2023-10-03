@@ -230,6 +230,12 @@ const headCells = [
     disablePadding: false,
     label: <IntlMessages id="guides.appModule.tagTotalDoPesoHeader" />,
   },
+  {
+    id: 'tagWH',
+    numeric: false,
+    disablePadding: false,
+    label: <IntlMessages id="guides.appModule.tagWHHeader" />,
+  },
 ];
 
 function GuideTableHead({ classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort }) {
